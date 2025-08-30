@@ -7,7 +7,7 @@ import { add, open } from '../../store/reducers/cart'
 
 import Button from '../Button'
 import { parseToBrl } from '../../utils'
-
+import { Game } from '../../types'
 type Props = {
   game: Game
 }
