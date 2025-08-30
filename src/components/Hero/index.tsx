@@ -30,7 +30,7 @@ const Hero = ({ game }: Props) => {
         <S.Infos>
           <h2>{game.name}</h2>
           <p>
-            {game.prices.discount && (
+            {game.prices.discount && game.prices.old && (
               <>
                 <span>De {parseToBrl(game.prices.old)}</span>
                 <br />
