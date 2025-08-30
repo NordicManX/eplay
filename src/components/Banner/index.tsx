@@ -20,7 +20,11 @@ const Banner = () => {
         <div>
           <S.Title>{game.name}</S.Title>
           <S.Prices>
-            De <span>{parseToBrl(game.prices.old)}</span> <br />
+            {game.prices.old && (
+              <>
+                De <span>{parseToBrl(game.prices.old)}</span> <br />
+              </>
+            )}
             por apenas {parseToBrl(game.prices.current)}
           </S.Prices>
         </div>
