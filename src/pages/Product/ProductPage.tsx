@@ -1,3 +1,5 @@
+// src/pages/Product/ProductPage.tsx
+
 import { useParams } from 'react-router-dom'
 
 import Hero from '../../components/Hero'
@@ -11,7 +13,8 @@ type GameParams = {
   id: string
 }
 
-const Product = () => {
+// O nome do componente foi alterado para corresponder à exportação
+const ProductPage = () => {
   const { id } = useParams() as GameParams
 
   const { data: game, isLoading, isError } = useGetGameQuery(id)
@@ -56,4 +59,4 @@ const Product = () => {
   )
 }
 
-export default Product
+export default ProductPage
