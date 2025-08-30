@@ -40,7 +40,7 @@ type PurchaseResponse = {
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://eplay-fake-json.vercel.app/api'
+    baseUrl: 'https://eplay-fake-json.vercel.app/api/eplay'
   }),
   endpoints: (builder) => ({
     getFeaturedGame: builder.query<Game, void>({
