@@ -1,4 +1,7 @@
+// src/components/Gallery/index.tsx
+
 import { useState } from 'react'
+import { GalleryItem } from '../../types' // <-- LINHA ADICIONADA PARA CORRIGIR O ERRO
 
 import Section from '../Section'
 
@@ -13,15 +16,18 @@ type Props = {
   name: string
   items: GalleryItem[]
 }
+
 interface ModalState extends GalleryItem {
   isvisible: boolean
 }
+
 const Gallery = ({ defaultCover, name, items }: Props) => {
   const [modal, setModal] = useState<ModalState>({
     isvisible: false,
     type: 'image',
     url: ''
   })
+
   const getMediaCover = (item: GalleryItem) => {
     if (item.type === 'image') return item.url
     return defaultCover
@@ -91,4 +97,5 @@ const Gallery = ({ defaultCover, name, items }: Props) => {
     </>
   )
 }
+
 export default Gallery
