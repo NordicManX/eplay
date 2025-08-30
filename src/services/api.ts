@@ -1,4 +1,7 @@
+// src/services/api.ts
+
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { Game } from '../types' // Garanta que esta importação esteja correta
 
 type Product = {
   id: number
@@ -40,7 +43,9 @@ type PurchaseResponse = {
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://ebac-fake-api.vercel.app/api/eplay'
+    // --- CORREÇÃO SIMPLIFICADA ---
+    // Apontando diretamente para a sua API no Vercel, sem usar .env
+    baseUrl: 'https://eplay-fake-json.vercel.app/api/eplay'
   }),
   endpoints: (builder) => ({
     getFeaturedGame: builder.query<Game, void>({
@@ -68,7 +73,7 @@ const api = createApi({
       query: () => 'rpg'
     }),
     getGame: builder.query<Game, string>({
-      query: (id) => `jogos/${id}`
+      query: (id) => `jogos/${id}` // Essencial: o caminho precisa ter 'jogos/'
     }),
     purchase: builder.mutation<PurchaseResponse, PurchasePayload>({
       query: (body) => ({

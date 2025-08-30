@@ -13,10 +13,20 @@ type GameParams = {
 
 const Product = () => {
   const { id } = useParams() as GameParams
-  const { data: game } = useGetGameQuery(id)
 
-  if (!game) {
+  const { data: game, isLoading, isError } = useGetGameQuery(id)
+
+  if (isLoading) {
     return <Loader />
+  }
+
+  if (isError || !game) {
+    return (
+      <h3 style={{ textAlign: 'center', margin: '128px' }}>
+        Ocorreu um erro ao buscar o jogo. <br /> Verifique o endereço ou tente
+        novamente mais tarde.
+      </h3>
+    )
   }
 
   return (
@@ -29,13 +39,11 @@ const Product = () => {
         <p>
           <b>Plataforma:</b> {game.details.system}
           <br />
-          <b> Desenvolvedor:</b>
-          {game.details.developer}
+          <b>Desenvolvedor:</b> {game.details.developer}
           <br />
-          <b>Editora:</b>
-          {game.details.publisher}
+          <b>Editora:</b> {game.details.publisher}
           <br />
-          <b>Idiomas:</b> O jogo oferece suporte a diversos idiomas, incluindo
+          <b>Idiomas:</b> O jogo oferece suporte a diversos idiomas, incluindo{' '}
           {game.details.languages.join(', ')}
         </p>
       </Section>
@@ -47,4 +55,5 @@ const Product = () => {
     </>
   )
 }
+
 export default Product

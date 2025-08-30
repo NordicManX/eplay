@@ -33,8 +33,26 @@ const ProductsList = ({ background, title, games, id, isLoading }: Props) => {
   const getGameTags = (game: Game) => {
     const tags = []
 
-    if (game.release_date) {
-      tags.push(game.release_date)
+    const getGameTags = (game: Game) => {
+      const tags = []
+
+      if (game.release_date) {
+        // --- LINHA CORRIGIDA ---
+        // Transforma a data '2020-10-27T00:00:00.000Z' em '27/10/2020'
+        const dataFormatada = new Date(game.release_date).toLocaleDateString(
+          'pt-BR'
+        )
+        tags.push(dataFormatada)
+      }
+
+      if (game.prices.discount) {
+        tags.push(`${game.prices.discount}%`)
+      }
+
+      if (game.prices.current) {
+        tags.push(parseToBrl(game.prices.current))
+      }
+      return tags
     }
 
     if (game.prices.discount) {
@@ -59,7 +77,6 @@ const ProductsList = ({ background, title, games, id, isLoading }: Props) => {
           {games &&
             games.map((game) => (
               <li key={game.id}>
-                {/* AS CORREÇÕES ESTÃO AQUI 👇 */}
                 <Product
                   id={game.id}
                   category={game.details.category} // ANTES: game.category

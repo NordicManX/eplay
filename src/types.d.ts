@@ -1,20 +1,20 @@
-declare interface GalleryItem {
+// src/types.ts
+
+// Esta é a definição correta
+export type GalleryItem = {
   type: 'image' | 'video'
   url: string
 }
 
-declare type Game = {
-  title: string
-  system: string
-  category: string
+export type Game = {
   id: number
   name: string
   description: string
-  release_date: string
+  release_date: string | null
   prices: {
-    discount?: number
-    old?: number
-    current?: number
+    discount: number | null
+    old: number | null
+    current: number
   }
   details: {
     category: string
