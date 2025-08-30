@@ -2,7 +2,7 @@ import { parseToBrl } from '../../utils'
 import Loader from '../Loader'
 import Product from '../Product'
 import * as S from './styles'
-
+import { Game } from '../../types'
 // É importante que o seu tipo 'Game' também esteja atualizado
 // para refletir a nova estrutura de dados da API.
 // Exemplo:
