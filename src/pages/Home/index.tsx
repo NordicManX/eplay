@@ -2,11 +2,11 @@ import ProductsList from '../../components/ProductsList'
 import Banner from '../../components/Banner'
 import Loader from '../../components/Loader'
 
-// 1. Importamos os flags 'isError' para saber se o pedido falhou
+// A importação do featuredGame foi removida daqui
 import { useGetOnSaleQuery, useGetSoonQuery } from '../../services/api'
 
 const Home = () => {
-  // 2. Extraímos os flags 'isError' juntamente com os outros estados
+  // A busca pelo featuredGame foi removida daqui
   const {
     data: onSaleGames,
     isLoading: isLoadingSale,
@@ -18,12 +18,10 @@ const Home = () => {
     isError: isErrorSoon
   } = useGetSoonQuery()
 
-  // 3. Verificamos o estado de carregamento primeiro
   if (isLoadingSale || isLoadingSoon) {
     return <Loader />
   }
 
-  // 4. Se algum dos pedidos der erro, mostramos uma mensagem clara
   if (isErrorSale || isErrorSoon) {
     return (
       <h4 style={{ textAlign: 'center', margin: '64px' }}>
@@ -33,30 +31,29 @@ const Home = () => {
     )
   }
 
-  // 5. Só renderizamos as listas se tivermos a certeza de que os dados chegaram
   if (onSaleGames && soonGames) {
     return (
       <>
+        {/* O Banner agora é chamado sem props, pois ele é autossuficiente */}
         <Banner />
         <ProductsList
           games={onSaleGames}
           title="Promoções"
           background="gray"
           id="on-sale"
-          isLoading={false} // O carregamento já é tratado nesta página
+          isLoading={false}
         />
         <ProductsList
           games={soonGames}
           title="Em breve"
           background="black"
           id="coming-soon"
-          isLoading={false} // O carregamento já é tratado nesta página
+          isLoading={false}
         />
       </>
     )
   }
 
-  // Este é um caso de segurança, se os dados não vierem por algum motivo
   return <h4>Nenhum jogo encontrado.</h4>
 }
 
