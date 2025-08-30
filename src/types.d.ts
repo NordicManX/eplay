@@ -4,6 +4,9 @@ declare interface GalleryItem {
 }
 
 declare type Game = {
+  title: string
+  system: string
+  category: string
   id: number
   name: string
   description: string

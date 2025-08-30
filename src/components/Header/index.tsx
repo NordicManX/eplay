@@ -36,7 +36,7 @@ const Header = () => {
               <S.LinkItem>
                 <Link
                   title="Clique aqui para acessar a página de categorias"
-                  to="/#categories"
+                  to="/categories"
                 >
                   Categorias
                 </Link>

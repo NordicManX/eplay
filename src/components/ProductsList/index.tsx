@@ -43,12 +43,12 @@ const ProductsList = ({ background, title, games, id, isLoading }: Props) => {
               <li key={game.id}>
                 <Product
                   id={game.id}
-                  category={game.details.category}
+                  category={game.category}
                   description={game.description}
                   image={game.media.thumbnail}
                   infos={getGameTags(game)}
-                  system={game.details.system}
-                  title={game.name}
+                  system={game.system}
+                  title={game.title}
                 />
               </li>
             ))}
